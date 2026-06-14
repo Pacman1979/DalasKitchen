@@ -130,7 +130,17 @@
       text-decoration: none;
       letter-spacing: -0.5px;
     }
-    .nav-logo .dot { color: var(--orange); }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand-logo {
+      height: 44px;
+      width: 44px;
+      object-fit: contain;
+    }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       text-decoration: none;
@@ -315,21 +325,6 @@
     .problem {
       padding: 88px 0;
       background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .problem::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 700px;
-      height: 700px;
-      background: url('Logo.jpg') center/contain no-repeat;
-      mix-blend-mode: multiply;
-      opacity: 0.25;
-      pointer-events: none;
     }
     .problem-inner {
       max-width: 1100px;
@@ -925,7 +920,10 @@
   <!-- NAV -->
   <nav aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">dalas<span class="dot">.</span>kitchen</a>
+      <div class="nav-brand">
+        <img src="Logo.jpg" alt="Dalas Kitchen logo" class="nav-brand-logo" />
+        <a href="#" class="nav-logo">dalas<span class="dot">.</span>kitchen</a>
+      </div>
       <ul class="nav-links">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#catering">Catering</a></li>
