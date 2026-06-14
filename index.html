@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dalas Kitchen — Gold Coast's Freshest Salad Bar</title>
+  <meta name="description" content="Dalas Kitchen is the Gold Coast's only gourmet salad bar. Fresh, healthy, ready-to-go salads, sangas and homemade sodas. Nobby Beach, Palm Beach & Currumbin." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #1a2e12;
+      --green-mid:    #2d5a1e;
+      --green-light:  #cde0b8;
+      --green-pale:   #f4f9ef;
+      --orange:       #e8793a;
+      --orange-deep:  #bf5820;
+      --cream:        #fdf9f4;
+      --text:         #1a1a1a;
+      --text-mid:     #444;
+      --text-muted:   #777;
+      --border:       #e2ddd6;
+      --white:        #ffffff;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--green-mid);
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 2px solid var(--green-mid);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--green-mid); color: #fff; }
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* ─── ANNOUNCEMENT BAR ─── */
+    .announce-bar {
+      background: var(--green-mid);
+      color: #fff;
+      text-align: center;
+      padding: 10px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .announce-bar span { color: var(--green-light); }
+    .announce-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green-mid);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo .dot { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--green-mid); }
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+    .nav-order {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-order:hover { background: var(--orange-deep); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 22px; color: var(--text); }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--green-pale);
+      padding: 80px 0 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .hero-content { padding-bottom: 64px; }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--orange);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--green-deep);
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      color: var(--green-mid);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero-badge {
+      background: #fff;
+      border: 1px solid var(--green-light);
+      color: var(--green-mid);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-badge svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* hero image panel */
+    .hero-img-panel {
+      position: relative;
+      height: 520px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-img-main {
+      width: 100%;
+      height: 460px;
+      background: var(--green-light);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--green-mid);
+      font-size: 14px;
+      font-weight: 500;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-img-main svg { width: 56px; height: 56px; stroke: var(--green-mid); fill: none; stroke-width: 1.5; }
+    .hero-floating-card {
+      position: absolute;
+      bottom: 60px;
+      left: -28px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      font-size: 13px;
+      min-width: 170px;
+    }
+    .hero-floating-card .card-label { color: var(--text-muted); font-size: 11px; margin-bottom: 4px; }
+    .hero-floating-card .card-value { font-weight: 500; color: var(--green-deep); font-size: 14px; display: flex; align-items: center; gap: 6px; }
+    .card-dot { width: 8px; height: 8px; background: #4caf50; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* ─── LOCATIONS STRIP ─── */
+    .locations-strip {
+      background: var(--green-deep);
+      padding: 0;
+    }
+    .locations-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .location-item {
+      padding: 22px 28px;
+      color: #fff;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .location-item:last-child { border-right: none; }
+    .loc-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .loc-icon svg { width: 20px; height: 20px; stroke: var(--green-light); fill: none; stroke-width: 1.8; }
+    .loc-name { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+    .loc-detail { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .loc-new-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── PROBLEM SECTION ─── */
+    .problem {
+      padding: 88px 0;
+      background: #fff;
+    }
+    .problem-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .problem h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--green-deep);
+      line-height: 1.25;
+      margin-bottom: 22px;
+    }
+    .problem p {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .promise-box {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green-mid);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 22px;
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--green-deep);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .problem-image-side {
+      position: relative;
+    }
+    .problem-img-block {
+      background: var(--green-pale);
+      border-radius: 20px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--green-mid);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .problem-img-block svg { width: 48px; height: 48px; stroke: var(--green-mid); fill: none; stroke-width: 1.5; }
+    .problem-stat-pill {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 16px;
+      padding: 18px 22px;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(232,121,58,0.35);
+    }
+    .pill-num { font-family: var(--font-display); font-size: 32px; font-weight: 900; line-height: 1; }
+    .pill-label { font-size: 11px; font-weight: 500; opacity: 0.88; margin-top: 2px; }
+
+    /* ─── VIDEO SECTION ─── */
+    .video-section {
+      background: var(--green-deep);
+      padding: 72px 0;
+    }
+    .video-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .video-text .section-label { color: var(--green-light); }
+    .video-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 2.8vw, 38px);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .video-text p { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 28px; }
+    .video-frame {
+      background: var(--green-mid);
+      border-radius: 20px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .video-frame:hover { transform: scale(1.01); }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(232,121,58,0.5);
+      transition: transform 0.2s;
+    }
+    .video-frame:hover .play-btn { transform: scale(1.08); }
+    .play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
+    .video-label { font-size: 13px; color: var(--green-light); font-weight: 500; }
+
+    /* ─── BENEFITS ─── */
+    .benefits {
+      padding: 88px 0;
+      background: var(--cream);
+    }
+    .benefits-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .benefits-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 14px;
+    }
+    .benefits-header p { font-size: 16px; color: var(--text-mid); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .benefits-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .benefit-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 22px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .benefit-icon svg { width: 24px; height: 24px; stroke: var(--green-mid); fill: none; stroke-width: 1.8; }
+    .benefit-card h3 { font-size: 15px; font-weight: 500; color: var(--green-deep); margin-bottom: 8px; }
+    .benefit-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── MENU PREVIEW ─── */
+    .menu-preview {
+      padding: 88px 0;
+      background: #fff;
+    }
+    .menu-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .menu-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 2.8vw, 38px);
+      font-weight: 700;
+      color: var(--green-deep);
+    }
+    .menu-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .menu-card {
+      background: var(--green-pale);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .menu-card:hover { transform: translateY(-3px); }
+    .menu-card-img {
+      height: 180px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--green-mid);
+      font-size: 13px;
+      font-weight: 500;
+      flex-direction: column;
+    }
+    .menu-card-img svg { width: 40px; height: 40px; stroke: var(--green-mid); fill: none; stroke-width: 1.5; }
+    .menu-card-body { padding: 18px 18px 20px; }
+    .menu-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-mid);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .menu-card-body h3 { font-size: 15px; font-weight: 500; color: var(--green-deep); margin-bottom: 6px; }
+    .menu-card-body p { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+    /* ─── LEAD MAGNET ─── */
+    .lead-magnet {
+      background: var(--orange);
+      padding: 72px 0;
+    }
+    .lead-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 28px;
+      text-align: center;
+    }
+    .lead-inner .section-label { color: rgba(255,255,255,0.75); }
+    .lead-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .lead-inner p { font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 32px; }
+    .lead-form {
+      display: flex;
+      gap: 10px;
+      max-width: 460px;
+      margin: 0 auto 14px;
+    }
+    .lead-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 32px;
+      border: none;
+      font-size: 15px;
+      font-family: var(--font-body);
+      outline: none;
+      color: var(--text);
+    }
+    .lead-form input:focus { box-shadow: 0 0 0 3px rgba(255,255,255,0.4); }
+    .lead-form button {
+      background: var(--green-deep);
+      color: #fff;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .lead-form button:hover { background: #0f1a09; }
+    .lead-small { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 88px 0;
+      background: var(--cream);
+    }
+    .testi-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .testi-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 10px;
+    }
+    .testi-header p { font-size: 16px; color: var(--text-mid); }
+    .testi-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testi-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .testi-video-thumb {
+      background: var(--green-pale);
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .testi-video-thumb:hover { background: var(--green-light); }
+    .testi-play {
+      width: 44px;
+      height: 44px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .testi-play svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+    .testi-vid-label { font-size: 13px; color: var(--green-mid); font-weight: 500; }
+    .testi-body { padding: 20px; }
+    .testi-stars { color: var(--orange); font-size: 15px; letter-spacing: 1px; margin-bottom: 10px; }
+    .testi-quote {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .testi-person {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testi-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--green-mid);
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 13px; font-weight: 500; color: var(--green-deep); }
+    .testi-loc { font-size: 12px; color: var(--text-muted); }
+
+    /* ─── SOCIAL PROOF ─── */
+    .social-proof {
+      background: var(--green-pale);
+      padding: 56px 0;
+    }
+    .proof-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+    .proof-stat {
+      text-align: center;
+      padding: 24px 16px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--green-mid);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label { font-size: 13px; color: var(--text-muted); }
+    .proof-media {
+      text-align: center;
+    }
+    .proof-media-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    .proof-logos {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .proof-logo {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ─── CATERING ─── */
+    .catering {
+      padding: 88px 0;
+      background: #fff;
+    }
+    .catering-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .catering-img {
+      background: var(--green-deep);
+      border-radius: 20px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--green-light);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .catering-img svg { width: 56px; height: 56px; stroke: var(--green-light); fill: none; stroke-width: 1.5; }
+    .catering-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 2.8vw, 38px);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 16px;
+    }
+    .catering-content p { font-size: 16px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+    .catering-list { list-style: none; margin: 22px 0 32px; }
+    .catering-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-mid);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .catering-list li:last-child { border-bottom: none; }
+    .catering-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: var(--green-deep);
+      padding: 88px 0;
+      text-align: center;
+    }
+    .final-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .final-inner .section-label { color: var(--green-light); }
+    .final-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .final-inner p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 36px; }
+    .final-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d1a09;
+      padding: 48px 0 28px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .nav-logo { display: block; margin-bottom: 14px; color: var(--green-light); }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .footer-social { display: flex; gap: 14px; }
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .footer-social a:hover { background: rgba(255,255,255,0.15); }
+    .footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 1.8; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img-panel { display: none; }
+      .hero-content { padding-bottom: 52px; }
+      .problem-inner { grid-template-columns: 1fr; }
+      .problem-image-side { display: none; }
+      .video-inner { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
+      .catering-inner { grid-template-columns: 1fr; }
+      .catering-img { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .locations-inner { grid-template-columns: 1fr; }
+      .location-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .location-item:last-child { border-bottom: none; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; }
+      .lead-form { flex-direction: column; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar">
+    🌿 <span>New store coming to Currumbin!</span> — Three Gold Coast locations, all serving fresh daily. <a href="#locations">Find us →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">dalas<span class="dot">.</span>kitchen</a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#locations">Find us</a></li>
+        <li><a href="#about">Our story</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://www.ubereats.com/au" class="nav-order" target="_blank" rel="noopener">Order now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Gold Coast's favourite salad bar</div>
+        <h1>Tired of lunch that <em>leaves you flat?</em></h1>
+        <p class="hero-sub">Most fast food on the Gold Coast is heavy, greasy, and forgettable. You eat it, you crash. Dalas Kitchen is the alternative — real food, made fresh daily, that actually fuels your afternoon.</p>
+        <div class="hero-btns">
+          <a href="#menu" class="btn-primary">Explore the menu</a>
+          <a href="#catering" class="btn-secondary">Book catering</a>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Locally sourced
+          </span>
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-9 6"/></svg>
+            Vegan-friendly
+          </span>
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Ready in minutes
+          </span>
+        </div>
+      </div>
+      <div class="hero-img-panel" aria-hidden="true">
+        <div class="hero-img-main">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M8 12s1-4 4-4 4 4 4 4"/><line x1="12" y1="12" x2="12" y2="17"/></svg>
+          <span>Hero food photo</span>
+          <span style="font-size:12px;color:#688f4e;">Styled bowl shot goes here</span>
+        </div>
+        <div class="hero-floating-card">
+          <div class="card-label">Both stores open now</div>
+          <div class="card-value"><span class="card-dot"></span> 9am – 6pm today</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS STRIP -->
+  <div class="locations-strip" id="locations">
+    <div class="locations-inner">
+      <div class="location-item">
+        <div class="loc-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="loc-name">Nobby Beach</div>
+          <div class="loc-detail">2247 Gold Coast Hwy<br>Mon–Fri 9–6 · Sat 9–4</div>
+        </div>
+      </div>
+      <div class="location-item">
+        <div class="loc-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="loc-name">Palm Beach</div>
+          <div class="loc-detail">Pavilions, Fifth Ave<br>Mon–Fri 9–6 · Sat 9–4</div>
+        </div>
+      </div>
+      <div class="location-item">
+        <div class="loc-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="loc-name">Currumbin</div>
+          <div class="loc-detail">Details coming soon</div>
+          <span class="loc-new-badge">Opening soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM / STORY -->
+  <section class="problem" id="about">
+    <div class="problem-inner">
+      <div>
+        <span class="section-label">Why Dalas?</span>
+        <h2>You deserve lunch you don't have to feel bad about</h2>
+        <p>You're busy. You want something quick. But "quick" on the Gold Coast usually means heavy, processed, and forgettable. You eat it, you crash — and spend the rest of the afternoon wishing you'd chosen better.</p>
+        <p>Jess and Michael Davies built Dalas Kitchen because they were sick of that same old compromise. They wanted to prove that eating fast doesn't have to mean eating badly.</p>
+        <p>Every salad, sanga, and homemade soda is made fresh each day from local hinterland produce. No shortcuts. No sad iceberg lettuce. Just real food that loves you back.</p>
+        <div class="promise-box">
+          The Gold Coast's only gourmet salad bar — serving Nobby Beach, Palm Beach, and soon Currumbin. Grab and go, or stay a while. Either way, you'll feel the difference.
+        </div>
+      </div>
+      <div class="problem-image-side" aria-hidden="true">
+        <div class="problem-img-block">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M8 12s1-4 4-4 4 4 4 4"/></svg>
+          <span>Jess & Michael photo</span>
+        </div>
+        <div class="problem-stat-pill">
+          <div class="pill-num">4.3★</div>
+          <div class="pill-label">Uber Eats rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WELCOME VIDEO -->
+  <section class="video-section">
+    <div class="video-inner">
+      <div class="video-text">
+        <span class="section-label">Meet the founders</span>
+        <h2>The story behind the salad</h2>
+        <p>Jess and Michael Davies didn't set out to reinvent lunch — they just wanted better options. Watch our quick intro to hear why they started Dalas Kitchen, what drives them every morning, and what you can expect every single time you walk through our door.</p>
+        <a href="#lead" class="btn-primary">Get our weekly fresh list</a>
+      </div>
+      <div class="video-frame" role="button" aria-label="Play welcome video from Jess and Michael" tabindex="0">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <span class="video-label">Watch our 90-second story</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="benefits-header">
+      <span class="section-label">What you get</span>
+      <h2>Food that loves you back</h2>
+      <p>We built Dalas Kitchen around one idea: fresh, wholesome food should be just as easy to grab as junk food.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-9 6"/></svg>
+        </div>
+        <h3>Locally grown, daily fresh</h3>
+        <p>Every salad starts with Gold Coast hinterland produce. Picked close, made fresh, served the same day.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Vegetarian &amp; vegan menu</h3>
+        <p>100% vegetarian, mostly vegan — with heaps of gluten-free options. No sad salads, no compromise.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Grab &amp; go in minutes</h3>
+        <p>Fast enough for your lunch break. Good enough to look forward to all morning long.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Catering for any crowd</h3>
+        <p>Team lunches, BBQs, events — we'll bring the freshest spread on the Coast, hassle-free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU PREVIEW -->
+  <section class="menu-preview" id="menu">
+    <div class="menu-header">
+      <div>
+        <span class="section-label">What's on</span>
+        <h2>The menu</h2>
+      </div>
+      <a href="#order" class="btn-primary">Order now</a>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12s1-3 4-3 4 3 4 3"/></svg>
+          <span>Salad bowl photo</span>
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">Signature salad</span>
+          <h3>Bangin' Cauli</h3>
+          <p>Panko-crusted roasted cauliflower, Asian slaw, mint, coriander, peanuts and creamy maple sriracha.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Sanga photo</span>
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">Fan favourite</span>
+          <h3>Pesto Chicken Sanga</h3>
+          <p>Poached chicken, pesto, avocado, cucumber and rocket in a freshly-baked baguette roll. The one people go back for.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/></svg>
+          <span>Pous Pous photo</span>
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">Cult favourite</span>
+          <h3>Pous Pous Salad</h3>
+          <p>A Dalas classic. Couscous, roasted veg, fresh herbs and a dressing that customers rave about.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD MAGNET -->
+  <section class="lead-magnet" id="lead">
+    <div class="lead-inner">
+      <span class="section-label">Stay in the loop</span>
+      <h2>Get our free Weekly Salad Drop</h2>
+      <p>What's fresh this week, seasonal specials, the occasional cheeky offer — delivered straight to your inbox every Monday morning. No spam. Just good food.</p>
+      <form class="lead-form" onsubmit="handleSignup(event)">
+        <input type="email" id="lead-email" placeholder="your@email.com" aria-label="Email address" required />
+        <button type="submit">Yes please!</button>
+      </form>
+      <p class="lead-small">Join 500+ Gold Coasters already on the list. Unsubscribe any time.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testi-header">
+      <span class="section-label">What people are saying</span>
+      <h2>The Gold Coast is obsessed</h2>
+      <p>Don't take our word for it — here's what our regulars think.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-video-thumb" role="button" aria-label="Play video testimonial from Sarah M." tabindex="0">
+          <div class="testi-play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <span class="testi-vid-label">Watch Sarah's story</span>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"I went back and bought another sandwich on the spot. That good. Not many places you can order a healthy meal that actually fills you up."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">SM</div>
+            <div>
+              <div class="testi-name">Sarah M.</div>
+              <div class="testi-loc">Brisbane</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-video-thumb" role="button" aria-label="Play video testimonial from Jake T." tabindex="0">
+          <div class="testi-play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <span class="testi-vid-label">Watch Jake's story</span>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Absolutely the best salads on the Gold Coast. Not even close. I visit Nobby Beach every week and Dalas is always on the list."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">JT</div>
+            <div>
+              <div class="testi-name">Jake T.</div>
+              <div class="testi-loc">Nobby Beach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-video-thumb" role="button" aria-label="Play video testimonial from Emma R." tabindex="0">
+          <div class="testi-play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <span class="testi-vid-label">Watch Emma's story</span>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"These guys are a saviour. As someone who's vegan on the Gold Coast, finding fast food this good is basically a miracle."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">ER</div>
+            <div>
+              <div class="testi-name">Emma R.</div>
+              <div class="testi-loc">Palm Beach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <div class="proof-inner">
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Gold Coast locations</div>
+        </div>
+        <div class="proof-stat">
+          <div class="stat-num">4.3★</div>
+          <div class="stat-label">Uber Eats rating</div>
+        </div>
+        <div class="proof-stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Local produce</div>
+        </div>
+        <div class="proof-stat">
+          <div class="stat-num">4k+</div>
+          <div class="stat-label">Instagram followers</div>
+        </div>
+      </div>
+      <div class="proof-media">
+        <div class="proof-media-label">As seen in</div>
+        <div class="proof-logos">
+          <div class="proof-logo">Urban List</div>
+          <div class="proof-logo">Inside Gold Coast</div>
+          <div class="proof-logo">yourtown</div>
+          <div class="proof-logo">Wanderlog</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATERING -->
+  <section class="catering" id="catering">
+    <div class="catering-inner">
+      <div class="catering-img" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Catering spread photo</span>
+      </div>
+      <div class="catering-content">
+        <span class="section-label">Feed your team</span>
+        <h2>Catering that actually wows</h2>
+        <p>Whether it's a Friday team lunch, a backyard BBQ, or a big corporate event — Dalas Kitchen brings the freshest spread on the Gold Coast, stress-free.</p>
+        <p>We handle everything. You just show up and look like a hero.</p>
+        <ul class="catering-list">
+          <li>Salad platters for 10 to 200+ people</li>
+          <li>Baguette rolls and homemade sodas included</li>
+          <li>All dietary needs catered for — vegan, GF, dairy-free</li>
+          <li>Delivery or pick-up available from both locations</li>
+          <li>Pre-order with 24 hours' notice</li>
+        </ul>
+        <a href="mailto:hello@dalaskitchen.com.au" class="btn-primary">Enquire about catering</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="order">
+    <div class="final-inner">
+      <span class="section-label">Ready when you are</span>
+      <h2>Your best lunch is one click away</h2>
+      <p>Order online for delivery, swing by in person, or get in touch about catering your next event. We'd love to feed you.</p>
+      <div class="final-btns">
+        <a href="https://www.ubereats.com/au" target="_blank" rel="noopener" class="btn-primary">Order on Uber Eats</a>
+        <a href="mailto:hello@dalaskitchen.com.au" class="btn-ghost">Enquire about catering</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">dalas<span class="dot">.</span>kitchen</a>
+        <p>Gold Coast's only gourmet salad bar. Fresh, healthy, ready-to-go. Made daily from local hinterland produce.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visit us</h4>
+        <ul>
+          <li><a href="#">Nobby Beach</a></li>
+          <li><a href="#">Palm Beach</a></li>
+          <li><a href="#">Currumbin (soon)</a></li>
+          <li><a href="#">Hours &amp; maps</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Order</h4>
+        <ul>
+          <li><a href="https://www.ubereats.com/au" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="https://bopple.app/dalaskitchen" target="_blank" rel="noopener">Bopple</a></li>
+          <li><a href="#catering">Catering enquiry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/dalas_kitchen/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/dalaskitchenaus/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="mailto:hello@dalaskitchen.com.au">Email us</a></li>
+          <li><a href="tel:+61466902229">0466 902 229</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Dalas Kitchen. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dalas_kitchen/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/dalaskitchenaus/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      const email = document.getElementById('lead-email').value;
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'You\'re on the list!';
+      btn.style.background = '#2d5a1e';
+      btn.disabled = true;
+      document.getElementById('lead-email').disabled = true;
+    }
+  </script>
+</body>
+</html>
